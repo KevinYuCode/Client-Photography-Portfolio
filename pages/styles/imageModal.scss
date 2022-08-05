@@ -1,0 +1,45 @@
+
+.image-modal-container {
+  position: fixed;
+  top: 0;
+  left: calc(var(--nav-width) + 1rem);
+  right: 0;
+  bottom: 0;
+  background-color: rgba(238, 238, 238, 0.6);
+  //   background-color: white;
+  // animation: viewImageFadeInBackground .3s;
+}
+.image-modal-close {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.image-modal-border {
+  background-color: white;
+  padding: 1rem 1rem 1rem 1rem;
+  z-index: 5;
+}
+.image-modal-image {
+  object-fit: cover;
+  height: 85vh;
+  // animation: viewImageFadeInImage .8s;
+}
+
+.image-modal-enter {
+  opacity: 0;
+}
+.image-modal-enter-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+.image-modal-active-done {
+}
+.image-modal-exit {
+  opacity: 1;
+}
+.image-modal-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}

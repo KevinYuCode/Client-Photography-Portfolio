@@ -1,0 +1,32 @@
+@keyframes viewImageFadeInBackground {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+@keyframes viewImageFadeOutBackground {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes viewImageFadeInImage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+@keyframes viewImageFadeOutImage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
+}
