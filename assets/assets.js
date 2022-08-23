@@ -26,6 +26,8 @@ import stock25 from "./photos/25.jpg";
 import stock26 from "./photos/26.jpg";
 import stock27 from "./photos/27.jpg";
 import NAV_TAB from "./Icons/MenuTab.svg";
+import NAV_X from "./Icons/NAV_X.svg";
+import Profile_Photo from "./ProfilePhoto/Profile_Photo.jpg";
 const PORTRAIT = "PORTRAIT";
 const LANDSCAPE = "LANDSCAPE";
 
@@ -59,4 +61,4 @@ const PHOTOS = [
   { orientation: PORTRAIT, src: stock27.src },
 ];
 
-export { PHOTOS, NAV_TAB };
+export { PHOTOS, NAV_TAB, NAV_X, Profile_Photo };

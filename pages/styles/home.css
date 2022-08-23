@@ -1,0 +1,20 @@
+.layout-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+      grid-template-columns: auto 1fr;
+  overflow: hidden;
+  max-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+}
+
+@media only screen and (max-width: 900px) {
+  .layout-container {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    overflow-y: scroll;
+    max-height: none;
+  }
+}
+/*# sourceMappingURL=home.css.map */

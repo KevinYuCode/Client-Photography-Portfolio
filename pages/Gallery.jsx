@@ -1,32 +1,63 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { PHOTOS } from "../assets/assets";
 import ImageModal from "../components/images/ImageModal";
 import { motion, AnimatePresence } from "framer-motion";
-function Gallery() {
-  const [activeImage, setActiveImage] = useState(null);
-  const [imageOn, setImageOn] = useState(false);
-  const toggleViewImage = (selectedImage) => {
-    setActiveImage(selectedImage ?? activeImage ?? null);
-    setImageOn(!imageOn);
+import { useDispatch, useSelector } from "react-redux";
+import { setActiveImage } from "../redux/gallery/gallery";
+
+export async function getStaticProps({ params }) {
+  return {
+    props: {},
   };
+}
+
+function Gallery() {
+  const dispatch = useDispatch();
+  const { imageOn } = useSelector(({ galleryState }) => galleryState);
+
+  const imageVariants = {
+    hidden: {
+      scale: 0.99,
+      opacity: 0,
+    },
+    visible: {
+      scale: 1,
+      opacity: 1,
+    },
+  };
+
   return (
-    <div className="gallery-container">
-      {PHOTOS.map((image, photoKey) => (
-        <div
-          className="gallery-image-container"
-          key={photoKey}
-          onClick={() => {
-            toggleViewImage(image);
-          }}
-          style={{ gridColumn: image.orientation === "LANDSCAPE" ? "span 2" : "span 1" }}
-        >
-          <img className="gallery-image row-c-c" src={image.src} alt="Photo by Johnny Wong" />
-        </div>
-      ))}
-      <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
-        {imageOn && <ImageModal image={activeImage} imageOn={imageOn} toggleViewImage={toggleViewImage} />}
+    // <motion.div className="gallery-container" style={{ overflowY: imageOn ? "hidden" : "visible" }}>
+    <motion.div className="gallery-container">
+      {/* Gallery Photo */}
+      <div id="gallery" className="gallery-images">
+        {PHOTOS.map((image, imageIndex) => (
+          <div
+            className="gallery-image-container"
+            key={imageIndex}
+            onClick={() => {
+              dispatch(setActiveImage({ src: image.src, index: imageIndex }));
+            }}
+            style={{ gridColumn: image.orientation === "LANDSCAPE" ? "span 2" : "span 1" }}
+          >
+            <motion.img
+              className="gallery-image row-c-c"
+              variants={imageVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: imageIndex * 0.12, duration: 0.3 }}
+              src={image.src}
+              alt="Photo by Johnny Wong"
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Gallery Image Modal*/}
+      <AnimatePresence initial={false} exitBeforeEnter onExitComplete={() => null}>
+        {imageOn && <ImageModal />}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }
 

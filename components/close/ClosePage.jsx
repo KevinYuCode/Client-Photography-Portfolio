@@ -1,9 +1,9 @@
 import React from "react";
 
-function ClosePage({ closeFunction }) {
+function ClosePage({ closeFunction, customClass}) {
   return (
     <div
-      className="close-page-container"
+      className={`close-page-container ${customClass}`}
       onClick={() => {
         closeFunction();
       }}

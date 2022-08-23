@@ -1,13 +1,32 @@
+html,
 body {
+  -webkit-overflow-scrolling: touch !important;
+  overflow: auto !important;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
   scrollbar-width: hidden;
 }
-p, h2,h3,li,button{
-  font-family: "manrope",sans-serif;
+p,
+h2,
+h3,
+li,
+button,
+input,
+textarea {
+  font-family: "manrope", sans-serif;
 }
-button{
-  background:none;
-  border:none;
-
+button {
+  background: none;
+  border: none;
 }
 /* Flexbox Row Custom */
 .row-c-c {
@@ -156,5 +175,6 @@ button{
 @import "gallery.scss";
 @import "home.scss";
 @import "about.scss";
+@import "contact.scss";
 @import "imageModal.scss";
 @import "closePage.scss";

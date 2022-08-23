@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,qBAAqB,CAAA;EACjB,OAAO,EAAC,EAAE;EACV,OAAO,EAAE,KAAK;EACd,QAAQ,EAAE,KAAK;EACf,GAAG,EAAC,CAAC;EACL,IAAI,EAAC,CAAC;EACN,KAAK,EAAC,CAAC;EACP,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,CAAC;CACb",
+    "sources": [
+        "closePage.scss"
+    ],
+    "names": [],
+    "file": "closePage.css"
+}

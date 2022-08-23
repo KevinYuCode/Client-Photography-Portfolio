@@ -10,14 +10,18 @@
     "export": "next export"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.3",
     "@types/react-redux": "^7.1.24",
     "framer-motion": "^6.5.1",
+    "lodash": "^4.17.21",
     "next": "12.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
     "react-redux": "^8.0.2",
+    "react-responsive": "^9.0.0-beta.10",
     "react-transition-group": "^4.4.4",
+    "react-use-scroll-direction": "^0.1.0",
     "sass": "^1.53.0"
   },
   "devDependencies": {

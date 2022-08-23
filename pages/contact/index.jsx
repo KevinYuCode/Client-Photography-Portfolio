@@ -1,23 +1,21 @@
 import React from "react";
 import Header from "../../components/Header";
-import MarginContainer from "../../components/MarginContainer";
+import Nav from "../Nav";
+import Contact from "./Contact";
 
-function Contact() {
+export async function getStaticProps({ params }) {
+  return {
+    props: {},
+  };
+}
+
+function index() {
   return (
     <>
-      <Header></Header>
-      <MarginContainer>
-        <div className="contact-container">
-          <h1>Let\'s Talk, I\'d love to hear from you!</h1>
-          <form className="contact-form col-fs-c">
-            <input type="text" className="contact-name" />
-            <input type="text" className="contact-email" />
-            <textarea rows="5" cols="60" className="contact-message" />
-          </form>
-        </div>
-      </MarginContainer>
+      <Header />
+      <Contact />
     </>
   );
 }
 
-export default Contact;
+export default index;
