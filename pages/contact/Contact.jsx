@@ -3,10 +3,7 @@ import { motion } from "framer-motion";
 import { ifttt_message, validateEmail, validateMessage, validateName } from "../../utils/contactUtils";
 import { useSelector, useDispatch } from "react-redux";
 import { setContactEmail, setContactMessage, setContactName } from "../../redux/contact/contact";
-import { useScrollDirection } from "react-use-scroll-direction";
-import { setImageOn, setScrollDirection } from "../../redux/gallery/gallery";
-import { setIsTopPage } from "../../redux/nav";
-import { throttle } from "lodash";
+
 
 export async function getStaticProps({ params }) {
   return {

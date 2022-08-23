@@ -1,9 +1,6 @@
 import React, { useEffect } from "react";
 import { Profile_Photo } from "../../assets/assets";
 import { motion } from "framer-motion";
-import { setScrollDirection } from "../../redux/gallery/gallery";
-import { useDispatch } from "react-redux";
-import { throttle } from "lodash";
 export async function getStaticProps({ params }) {
   return {
     props: {},
