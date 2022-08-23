@@ -1,11 +1,9 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import { Profile_Photo } from "../../assets/assets";
 import { motion } from "framer-motion";
-import { setActiveImage, setImageOn, setScrollDirection } from "../../redux/gallery/gallery";
-import { useDispatch, useSelector } from "react-redux";
-import { useScrollDirection } from "react-use-scroll-direction";
-import { setIsTopPage } from "../../redux/nav";
-
+import { setScrollDirection } from "../../redux/gallery/gallery";
+import { useDispatch } from "react-redux";
+import { throttle } from "lodash";
 export async function getStaticProps({ params }) {
   return {
     props: {},
@@ -13,43 +11,9 @@ export async function getStaticProps({ params }) {
 }
 
 function About() {
-  const dispatch = useDispatch();
-  const { isScrollingUp, isScrollingDown, scrollTargetRef } = useScrollDirection();
-  const { isTopPage } = useSelector(({ navState }) => navState);
-
-  useEffect(() => {
-    if (!isTopPage) {
-      if (isScrollingUp) dispatch(setScrollDirection("UP"));
-      else if (isScrollingDown) dispatch(setScrollDirection("DOWN"));
-    }
-  }, [isScrollingUp, isScrollingDown]);
-
-  useEffect(() => {
-    let el = document.getElementById("about");
-    el.addEventListener("scroll", (e) => {
-      if (e.target.scrollTop >= 0 && e.target.scrollTop < 2) {
-        dispatch(setIsTopPage(true));
-        dispatch(setScrollDirection("UP"));
-      } else {
-        dispatch(setIsTopPage(false));
-      }
-    });
-
-    return () => {
-      dispatch(setImageOn(false));
-      el.removeEventListener("scroll", (e) => {
-        if (e.target.scrollTop >= 0 && e.target.scrollTop < 2) {
-          dispatch(setIsTopPage(true));
-          dispatch(setScrollDirection("UP"));
-        } else {
-          dispatch(setIsTopPage(false));
-        }
-      });
-    };
-  }, []);
 
   return (
-    <div id="about" className="about-container row-c-c" ref={scrollTargetRef}>
+    <div id="about" className="about-container row-c-c">
       <motion.div className="about-content row-c-c">
         <motion.div
           className="about-info"

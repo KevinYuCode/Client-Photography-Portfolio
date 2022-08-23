@@ -81,11 +81,11 @@ function Nav() {
     },
     visible: {
       opacity: 1,
-      transition: { delay: 0.5 },
+      transition: { delay: 0.3 },
     },
     exit: {
       opacity: 0,
-      transition: { delay: 0.0, duration: 0.2 },
+      transition: { delay: 0.0, duration: 0.2, ease: "easeInOut" },
     },
   };
   const toggleNav = (navOnState) => {
@@ -94,13 +94,7 @@ function Nav() {
 
   useEffect(() => {
     if (screenSize === "MOBILE") {
-      const handleRouteChange = () => {
-        dispatch(setNavOn(false));
-      };
-      router.events.on("routeChangeComplete", handleRouteChange);
-      return () => {
-        router.events.off("routeChangeComplete", handleRouteChange);
-      };
+      dispatch(setNavOn(false));
     }
   }, [router.events, router]);
 

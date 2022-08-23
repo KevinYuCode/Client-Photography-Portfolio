@@ -1,28 +1,28 @@
 .gallery-container {
-  height: 100vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  height: 100%;
+  // overflow: hidden;
+  overflow-anchor: none;
+  overflow: hidden !important;
 }
 .gallery-images {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-items: center;
   grid-gap: 1rem;
-  height: calc(100vh + 2rem);
   margin: auto;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow: hidden;
   scrollbar-width: none;
   grid-auto-flow: dense;
   position: relative;
   padding: 1rem 1rem 1rem 0rem;
+  height: 100%;
+  overflow: hidden !important;
 
   @media only screen and (max-width: 1700px) {
     grid-template-columns: 1fr 1fr 1fr;
   }
   @media only screen and (max-width: 1400px) {
     grid-template-columns: 1fr 1fr 1fr;
-    
   }
   @media only screen and (max-width: 800px) {
     grid-template-columns: 1fr 1fr;

@@ -6,6 +6,7 @@ import { setContactEmail, setContactMessage, setContactName } from "../../redux/
 import { useScrollDirection } from "react-use-scroll-direction";
 import { setImageOn, setScrollDirection } from "../../redux/gallery/gallery";
 import { setIsTopPage } from "../../redux/nav";
+import { throttle } from "lodash";
 
 export async function getStaticProps({ params }) {
   return {
@@ -16,9 +17,7 @@ export async function getStaticProps({ params }) {
 function Contact() {
   const dispatch = useDispatch();
   const { contactName, contactEmail, contactMessage } = useSelector(({ contactState }) => contactState);
-  const { isTopPage} = useSelector(({ navState }) => navState);
   const [validMessage, setValidMessage] = useState(false);
-  const { isScrollingUp, isScrollingDown, scrollTargetRef } = useScrollDirection();
 
   const sendMessage = () => {
     if (validMessage) ifttt_message(contactName, contactEmail, contactMessage);
@@ -45,38 +44,8 @@ function Contact() {
     }
   }, [contactName, contactEmail, contactMessage]);
 
-  useEffect(() => {
-    if (!isTopPage) {
-      if (isScrollingUp) dispatch(setScrollDirection("UP"));
-      else if (isScrollingDown) dispatch(setScrollDirection("DOWN"));
-    }
-  }, [isScrollingUp, isScrollingDown]);
-
-  useEffect(() => {
-    let el = document.getElementById("contact");
-    el.addEventListener("scroll", (e) => {
-      if (e.target.scrollTop >= 0 && e.target.scrollTop < 2) {
-        dispatch(setIsTopPage(true));
-        dispatch(setScrollDirection("UP"));
-      } else {
-        dispatch(setIsTopPage(false));
-      }
-    });
-    return () => {
-      dispatch(setImageOn(false));
-      el.removeEventListener("scroll", (e) => {
-        if (e.target.scrollTop >= 0 && e.target.scrollTop < 2) {
-          dispatch(setIsTopPage(true));
-          dispatch(setScrollDirection("UP"));
-        } else {
-          dispatch(setIsTopPage(false));
-        }
-      });
-    };
-  }, []);
-
   return (
-    <div id="contact" className="contact-container col-c-c" ref={scrollTargetRef}>
+    <div id="contact" className="contact-container col-c-c">
       <motion.div
         className="contact-content col-fs-c"
         initial={{ opacity: 0, scale: 0.98 }}

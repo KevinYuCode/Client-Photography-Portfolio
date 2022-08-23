@@ -1,7 +1,9 @@
 html,
 body {
-  -webkit-overflow-scrolling: touch !important;
-  overflow: auto !important;
+  overflow: none !important;
+  // -webkit-overflow-scrolling: touch;
+  // overflow-anchor: none;
+
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

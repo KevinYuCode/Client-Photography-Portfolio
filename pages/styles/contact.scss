@@ -2,16 +2,18 @@
 }
 .contact-container {
   max-height: 900px;
-  overflow: hidden;
   width: 100%;
   height: 100%;
   margin: auto;
+  overflow:hidden !important;
+
   @media only screen and (max-width: 900px) {
     margin: 0;
     width: 100vw;
+    height: 100%;
     max-height: none;
-    overflow-y: scroll;
     justify-content: flex-start;
+    overflow-anchor: none;
   }
 }
 .contact-content {
@@ -23,6 +25,7 @@
   margin-inline: 3rem;
   justify-content: space-evenly;
   justify-self: center;
+  overflow:hidden !important;
   @media only screen and (max-width: 1100px) {
     width: 70%;
   }
@@ -32,7 +35,7 @@
     justify-content: flex-start;
     position: relative;
     top: 100px;
-    height: 100vh;
+    height: 150vh;
     min-height: 420px;
     max-height: none;
     padding: 5rem 0;

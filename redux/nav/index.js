@@ -7,7 +7,6 @@ export const navSlice = createSlice({
     closedNavWidth: "60px",
     openNavWidth: "307px",
     screenSize: "DESKTOP",
-    isTopPage: true,
   },
   reducers: {
     /**
@@ -42,17 +41,9 @@ export const navSlice = createSlice({
     setScreenSize: (state, { payload }) => {
       state.screenSize = payload;
     },
-    /**
-     *
-     * @param {*} state
-     * @param {Boolean} payload determines whether the screen is at top page 
-     */
-    setIsTopPage: (state, { payload }) => {
-      state.isTopPage = payload;
-    },
   },
 });
 
 //Action creators are generated for each case reducer function
-export const { setNavOn, setClosedNavWidth, setOpenNavWidth, setScreenSize, setIsTopPage} = navSlice.actions;
+export const { setNavOn, setClosedNavWidth, setOpenNavWidth, setScreenSize } = navSlice.actions;
 export default navSlice.reducer;
