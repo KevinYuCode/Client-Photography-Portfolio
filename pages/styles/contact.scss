@@ -23,7 +23,8 @@
   width: 100%;
   max-width: 1000px;
   margin-inline: 3rem;
-  justify-content: space-evenly;
+  justify-content: center;
+  row-gap: 3rem;
   justify-self: center;
   overflow:hidden !important;
   @media only screen and (max-width: 1100px) {
@@ -42,7 +43,22 @@
   }
   h1 {
     width: 100%;
-    text-align: left;
+    text-align: center;
+    font-size: 3rem;
+  }
+  a{
+    border: 3px solid rgba(0,0,0,.6);
+    border-radius: .5rem;
+    color: rgba(0,0,0,.6);
+    cursor: pointer;
+    font-size: 1.3rem;
+    font-weight: 500;
+    padding: 1rem 3rem;
+    transition: background-color .5s;
+    &:hover{
+      background-color: rgba(0,0,0,.2);
+      color:white;
+    }
   }
   input {
     width: 100%;

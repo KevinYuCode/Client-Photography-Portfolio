@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ifttt_message, validateEmail, validateMessage, validateName } from "../../utils/contactUtils";
+import {
+  ifttt_message,
+  validateEmail,
+  validateMessage,
+  validateName,
+} from "../../utils/contactUtils";
 import { useSelector, useDispatch } from "react-redux";
-import { setContactEmail, setContactMessage, setContactName } from "../../redux/contact/contact";
-
+import {
+  setContactEmail,
+  setContactMessage,
+  setContactName,
+} from "../../redux/contact/contact";
+import axios from "axios";
 
 export async function getStaticProps({ params }) {
   return {
@@ -11,9 +20,15 @@ export async function getStaticProps({ params }) {
   };
 }
 
+const BASE_URL =
+  "https://maker.ifttt.com/trigger/{event}/json/with/key/n3S4vjj2V3Uav861ZholmkgmNsyPwH_osXaBD5nvqs2";
+const sendEmail = () => {};
+
 function Contact() {
   const dispatch = useDispatch();
-  const { contactName, contactEmail, contactMessage } = useSelector(({ contactState }) => contactState);
+  const { contactName, contactEmail, contactMessage } = useSelector(
+    ({ contactState }) => contactState
+  );
   const [validMessage, setValidMessage] = useState(false);
 
   const sendMessage = () => {
@@ -30,7 +45,8 @@ function Contact() {
   };
 
   const setMessage = (e) => {
-    if (validateMessage(e.target.value)) dispatch(setContactMessage(e.target.value));
+    if (validateMessage(e.target.value))
+      dispatch(setContactMessage(e.target.value));
   };
 
   useEffect(() => {
@@ -53,7 +69,8 @@ function Contact() {
           Let's Connect! <br />
           I'd love to hear from you.
         </h1>
-        <input
+        <a href="mailto:wong.c.johnny@gmail.com">Contact Me</a>
+        {/* <input
           type="text"
           placeholder="Name"
           value={contactName}
@@ -88,7 +105,7 @@ function Contact() {
           style={{ opacity: validMessage ? 1 : 0.7, cursor: validMessage ? "pointer" : "default" }}
         >
           Send
-        </button>
+        </button> */}
       </motion.div>
     </div>
   );
